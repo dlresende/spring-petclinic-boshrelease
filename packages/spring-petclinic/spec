@@ -1,0 +1,11 @@
+---
+name: spring-petclinic
+
+dependencies:
+- openjdk-8
+
+files:
+- spring-petclinic/**/*
+
+excluded_files:
+- spring-petclinic/target/**/*

@@ -1,0 +1,5 @@
+check process spring-petclinic
+  with pidfile /var/vcap/sys/run/bpm/spring-petclinic/spring-petclinic.pid
+  start program "/var/vcap/jobs/bpm/bin/bpm start spring-petclinic"
+  stop program "/var/vcap/jobs/bpm/bin/bpm stop spring-petclinic"
+  group vcap

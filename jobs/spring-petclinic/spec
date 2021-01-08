@@ -1,0 +1,11 @@
+---
+name: spring-petclinic
+
+templates:
+  bpm.yml.erb: config/bpm.yml
+
+packages:
+- openjdk-8
+- spring-petclinic
+
+properties: {}

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -e
+set -x
+
+source /var/vcap/packages/openjdk-8/bosh/compile.env
+
+cd spring-petclinic/
+./mvnw package -DskipTests
+cp -a target/spring-petclinic-*.jar "${BOSH_INSTALL_TARGET}/spring-petclinic.jar"

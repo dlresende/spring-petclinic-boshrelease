@@ -1,0 +1,38 @@
+---
+name: petclinic
+
+releases:
+- name: "bpm"
+  version: "1.1.9"
+  url: "https://bosh.io/d/github.com/cloudfoundry/bpm-release?v=1.1.9"
+  sha1: "dcf0582d838a73de29da273552ae79ac3098ee8b"
+- name: spring-petclinic
+  version: create
+  url: file://.
+
+stemcells:
+- alias: default
+  os: ubuntu-xenial
+  version: latest
+
+update:
+  canaries: 2
+  max_in_flight: 1
+  canary_watch_time: 5000-60000
+  update_watch_time: 5000-60000
+
+instance_groups:
+- name: petclinic
+  azs: [z1]
+  instances: 1
+  jobs:
+  - name: bpm
+    release: bpm
+  - name: spring-petclinic
+    release: spring-petclinic
+    properties: {}
+  vm_type: default
+  stemcell: default
+  persistent_disk: 10240
+  networks:
+  - name: default
