@@ -3,9 +3,20 @@ name: spring-petclinic
 
 templates:
   bpm.yml.erb: config/bpm.yml
+  application.properties.erb: config/application.properties
 
 packages:
 - openjdk-8
 - spring-petclinic
 
-properties: {}
+properties:
+  db.name:
+    default: petclinic
+  db.username:
+    default: petclinic
+  db.password:
+    default: petclinic
+
+consumes:
+- name: db
+  type: mysql

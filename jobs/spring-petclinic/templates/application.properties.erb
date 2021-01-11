@@ -1,0 +1,7 @@
+# database init, supports mysql too
+database=mysql
+spring.datasource.url=jdbc:mysql://<%= link('db').address %>:<%= link('db').p("port") %>/<%= p('db.name') %>
+spring.datasource.username=<%= p('db.username') %>
+spring.datasource.password=<%= p('db.password') %>
+# SQL is written to be idempotent so this is safe
+spring.datasource.initialization-mode=always

@@ -4,3 +4,4 @@ processes:
     args:
     - -jar
     - /var/vcap/packages/spring-petclinic/spring-petclinic.jar
+    - -Dspring.config.additional-location="/var/vcap/jobs/spring-petclinic/config/application.properties"
