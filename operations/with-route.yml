@@ -8,7 +8,7 @@
     sha1: "61f99c90e6c65888e7998c5b576216d148b349be"
 
 - type: replace
-  path: /instance_groups/name=petclinic/jobs/-
+  path: /instance_groups/name=webapp/jobs/-
   value:
     name: route_registrar
     release: routing

@@ -32,7 +32,7 @@ update:
   update_watch_time: 5000-60000
 
 instance_groups:
-- name: mysql
+- name: db
   instances: 1
   azs: [z1]
   networks: [{name: default}]
@@ -60,8 +60,8 @@ instance_groups:
   - name: smoke-tests-user
     release: pxc
 
-- name: petclinic
   azs: [z1]
+- name: webapp
   instances: 1
   jobs:
   - name: spring-petclinic
