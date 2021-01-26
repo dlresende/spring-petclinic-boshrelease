@@ -7,9 +7,13 @@ templates:
 
 packages:
 - openjdk-8
+- openjdk-11
 - spring-petclinic
 
 properties:
+  jre: 
+    default: 8
+
   db.name:
     default: petclinic
   db.username:

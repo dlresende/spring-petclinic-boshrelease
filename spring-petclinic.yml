@@ -67,6 +67,7 @@ instance_groups:
   - name: spring-petclinic
     release: spring-petclinic
     properties:
+      jre: 8
       db:
         name: *petclinic_db
         username: *petclinic_db_username

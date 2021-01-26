@@ -6,4 +6,4 @@ processes:
       - /var/vcap/packages/spring-petclinic/spring-petclinic.jar
       - -Dspring.config.additional-location="/var/vcap/jobs/spring-petclinic/config/application.properties"
     env:
-      PATH: /var/vcap/packages/openjdk-8/jre/bin:$PATH
+      PATH: /var/vcap/packages/openjdk-<%= p('jre') %>/jre/bin:$PATH
