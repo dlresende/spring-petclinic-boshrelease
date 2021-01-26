@@ -6,5 +6,5 @@ set -x
 source /var/vcap/packages/openjdk-8/bosh/compile.env
 
 cd spring-petclinic/
-./mvnw package -DskipTests
+./mvnw --batch-mode package -DskipTests
 cp -a target/spring-petclinic-*.jar "${BOSH_INSTALL_TARGET}/spring-petclinic.jar"
