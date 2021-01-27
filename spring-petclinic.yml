@@ -68,6 +68,7 @@ instance_groups:
     release: spring-petclinic
     properties:
       jre: 8
+      port: 8080
       db:
         name: *petclinic_db
         username: *petclinic_db_username

@@ -13,6 +13,8 @@ packages:
 properties:
   jre: 
     default: 8
+  port:
+    default: 8080
 
   db.name:
     default: petclinic
