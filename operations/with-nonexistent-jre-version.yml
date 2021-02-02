@@ -1,0 +1,4 @@
+---
+- type: replace
+  path: /instance_groups/name=petclinic/jobs/name=spring-petclinic/properties/jre
+  value: 9

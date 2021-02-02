@@ -1,0 +1,24 @@
+---
+- type: replace
+  path: /releases/-
+  value:
+    name: "turbulence"
+    version: "0.10.0"
+    url: "https://bosh.io/d/github.com/cppforlife/turbulence-release?v=0.10.0"
+    sha1: "259344312796e23500b2836a15140f8f09ad99ee"
+
+- type: replace
+  path: /instance_groups/name=webapp/jobs/-
+  value:
+    name: turbulence_agent
+    release: turbulence
+    consumes:
+      api: {from: api, deployment: extras}
+
+- type: replace
+  path: /instance_groups/name=db/jobs/-
+  value:
+    name: turbulence_agent
+    release: turbulence
+    consumes:
+      api: {from: api, deployment: extras}
