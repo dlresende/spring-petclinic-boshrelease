@@ -34,11 +34,6 @@ update:
 instance_groups:
 - name: db
   instances: 1
-  azs: [z1]
-  networks: [{name: default}]
-  vm_type: default
-  stemcell: default
-  persistent_disk: 10_240
   jobs:
   - name: pxc-mysql
     release: pxc
@@ -53,10 +48,16 @@ instance_groups:
           password: ((petclinic_db_password))
     provides:
       mysql: {as: db_conn}
+  vm_type: small
+  stemcell: default
+  networks: [{name: ((network))}]
+  azs: [((availability-zone-db))]
+  persistent_disk: 10_240
 
-  azs: [z1]
 - name: webapp
   instances: 1
+  consumes:
+    db: {from: db_conn}
   jobs:
   - name: spring-petclinic
     release: spring-petclinic
@@ -67,12 +68,10 @@ instance_groups:
         name: *petclinic_db
         username: *petclinic_db_username
         password: ((petclinic_db_password))
-  vm_type: default
+  vm_type: small
   stemcell: default
-  persistent_disk: 10_240
-  networks: [{name: default}]
-  consumes:
-    db: {from: db_conn}
+  networks: [{name: ((network))}]
+  azs: [((availability-zone-webapp))]
 
 variables:
 - name: mysql_admin_password
