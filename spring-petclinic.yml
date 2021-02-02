@@ -53,12 +53,6 @@ instance_groups:
           password: ((petclinic_db_password))
     provides:
       mysql: {as: db_conn}
-  - name: smoke-tests
-    release: pxc
-    properties:
-      db_password: ((smoke_tests_db_password))
-  - name: smoke-tests-user
-    release: pxc
 
   azs: [z1]
 - name: webapp
@@ -104,7 +98,5 @@ variables:
   options:
     ca: pxc_server_ca
     common_name: mysql_server_certificate
-- name: smoke_tests_db_password
-  type: password
 - name: petclinic_db_password
   type: password
