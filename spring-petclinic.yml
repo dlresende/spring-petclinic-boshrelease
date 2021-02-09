@@ -49,7 +49,7 @@ instance_groups:
           password: ((petclinic_db_password))
     provides:
       mysql: {as: db_conn}
-  vm_type: small
+  vm_type: ((db-vm-type))
   stemcell: default
   networks: [{name: ((network))}]
   azs: [((db-az1))]
@@ -69,7 +69,7 @@ instance_groups:
         name: *petclinic_db
         username: *petclinic_db_username
         password: ((petclinic_db_password))
-  vm_type: small
+  vm_type: ((webapp-vm-type))
   stemcell: default
   networks: [{name: ((network))}]
   azs: [((webapp-az1))]
