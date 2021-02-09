@@ -52,7 +52,7 @@ instance_groups:
   vm_type: small
   stemcell: default
   networks: [{name: ((network))}]
-  azs: [((availability-zone-db))]
+  azs: [((db-az1))]
   persistent_disk: 10_240
 
 - name: webapp
@@ -72,7 +72,7 @@ instance_groups:
   vm_type: small
   stemcell: default
   networks: [{name: ((network))}]
-  azs: [((availability-zone-webapp))]
+  azs: [((webapp-az1))]
 
 variables:
 - name: mysql_admin_password
