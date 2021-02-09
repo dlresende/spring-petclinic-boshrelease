@@ -38,6 +38,7 @@ instance_groups:
   - name: pxc-mysql
     release: pxc
     properties:
+      port: ((mysql-port))
       admin_password: ((mysql_admin_password))
       tls:
         galera: ((galera_server_certificate))
@@ -63,7 +64,7 @@ instance_groups:
     release: spring-petclinic
     properties:
       jre: 8
-      port: 8080
+      port: ((spring-boot-port))
       db:
         name: *petclinic_db
         username: *petclinic_db_username
