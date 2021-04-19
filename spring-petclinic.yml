@@ -38,7 +38,7 @@ instance_groups:
   - name: pxc-mysql
     release: pxc
     properties:
-      port: ((mysql-port))
+      port: 3306
       admin_password: ((mysql_admin_password))
       tls:
         galera: ((galera_server_certificate))
@@ -49,10 +49,10 @@ instance_groups:
           password: ((petclinic_db_password))
     provides:
       mysql: {as: db_conn}
-  vm_type: ((db-vm-type))
+  vm_type: default
   stemcell: default
-  networks: [{name: ((network))}]
-  azs: [((db-az1))]
+  networks: [{name: default}]
+  azs: [z1]
   persistent_disk: 10_240
 
 - name: webapp
@@ -64,15 +64,15 @@ instance_groups:
     release: spring-petclinic
     properties:
       jre: 8
-      port: ((spring-boot-port))
+      port: 8080
       db:
         name: *petclinic_db
         username: *petclinic_db_username
         password: ((petclinic_db_password))
-  vm_type: ((webapp-vm-type))
+  vm_type: default
   stemcell: default
-  networks: [{name: ((network))}]
-  azs: [((webapp-az1))]
+  networks: [{name: default}]
+  azs: [z2]
 
 variables:
 - name: mysql_admin_password
