@@ -1,11 +1,53 @@
 ---
 - type: replace
+  path: /addons/-
+  value:
+    jobs:
+    - name: bosh-dns-aliases
+      properties:
+        aliases:
+        - domain: routing-api.service.cf.internal
+          targets:
+          - deployment: cf
+            domain: bosh
+            instance_group: api
+            network: default
+            query: '*'
+        - domain: uaa.service.cf.internal
+          targets:
+          - deployment: cf
+            domain: bosh
+            instance_group: uaa
+            network: default
+            query: '*'
+        - domain: nats.service.cf.internal
+          targets:
+          - deployment: cf
+            domain: bosh
+            instance_group: nats
+            network: default
+            query: '*'
+        - domain: _.nats.service.cf.internal
+          targets:
+          - deployment: cf
+            domain: bosh
+            instance_group: nats
+            network: default
+            query: _
+      release: bosh-dns-aliases
+    name: bosh-dns-aliases
+
+- type: replace
   path: /releases/-
   value:
     name: "routing"
-    version: "0.211.0"
-    url: "https://bosh.io/d/github.com/cloudfoundry/routing-release?v=0.211.0"
-    sha1: "61f99c90e6c65888e7998c5b576216d148b349be"
+    version: latest
+
+- type: replace
+  path: /releases/-
+  value:
+    name: bosh-dns-aliases
+    version: latest
 
 - type: replace
   path: /instance_groups/name=webapp/jobs/-
@@ -13,7 +55,7 @@
     name: route_registrar
     release: routing
     consumes:
-      nats: {from: nats, deployment: ((cf-deployment))}
+      nats: {from: nats, deployment: cf, ip_addresses: true }
     properties:
       route_registrar:
         routes:
