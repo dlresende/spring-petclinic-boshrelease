@@ -40,7 +40,7 @@
 - type: replace
   path: /releases/-
   value:
-    name: "routing"
+    name: routing
     version: latest
 
 - type: replace
@@ -55,8 +55,14 @@
     name: route_registrar
     release: routing
     consumes:
-      nats: {from: nats, deployment: cf, ip_addresses: true }
+      nats-tls: {from: nats-tls, deployment: cf, ip_addresses: true }
     properties:
+      nats:
+        tls:
+          enabled: true
+          client_cert: ((nats_client_cert_certificate))
+          client_key: ((nats_client_cert_private_key))
+
       route_registrar:
         routes:
         - name: petclinic
